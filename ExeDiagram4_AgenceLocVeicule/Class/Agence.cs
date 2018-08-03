@@ -28,7 +28,9 @@ namespace ExeDiagram4_AgenceLocVeicule.Class
 
         public double CalculerMontantLocation(DateTime dateDebut,DateTime dateFin)//Comment faire pour retourner qlqch
         {
-            return default(double);
+            var nombreJours = (dateFin - dateDebut).TotalDays;
+
+            return this.Vehicule.GetPrixJour() * nombreJours;
         }
     }
 }
