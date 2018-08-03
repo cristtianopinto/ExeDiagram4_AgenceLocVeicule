@@ -8,6 +8,14 @@ namespace ExeDiagram4_AgenceLocVeicule.Class
 {
     public class Agence
     {
+        
+        public Agence()
+        {
+            Parc = new List<Vehicule>(); //ATTENTION - on besoin de initialiser la List
+            Personnel = new List<Employe>();
+        }
+        
+        public string Nom { get; set; }
         public string Adresse { get; set; }
         public string Ville { get; set; }
         
@@ -26,9 +34,9 @@ namespace ExeDiagram4_AgenceLocVeicule.Class
         public Client Client { get; set; }
         public Vehicule Vehicule { get; set; }
 
-        public double CalculerMontantLocation(DateTime dateDebut,DateTime dateFin)//Comment faire pour retourner qlqch
+        public double CalculerMontantLocation()//Comment faire pour retourner qlqch
         {
-            var nombreJours = (dateFin - dateDebut).TotalDays;
+            var nombreJours = (this.DateFin - this.DateDebut).TotalDays;
 
             return this.Vehicule.GetPrixJour() * nombreJours;
         }

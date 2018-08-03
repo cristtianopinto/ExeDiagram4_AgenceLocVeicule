@@ -11,29 +11,40 @@ namespace ExeDiagram4_AgenceLocVeicule.Class
         public string Marque { get; set; }
         public string Modele { get; set; }
 
-        public double GetPrixJour()//Comment faire pour retourner qlqch
+        public abstract double GetPrixJour();//Comment faire pour retourner qlqch
+        /*
         {
             return default(double);
-        }
+        }*/
     }
     public class Camionette : Vehicule
     {
         public int PoidsMaxEnKilo { get; set; }
-        public int prixJour { get; set; }
+        public int PrixJour { get; set; }
+
+        public override double GetPrixJour()
+        {
+            return this.PrixJour;
+        }
     }
     public class Voiture : Vehicule
     {
         public int NombrePortes { get; set; } = 5;//Marquer valuer par default?? int = 5
         public CategorieVoiture Categorie { get; set; }
-        /*
-        public Voiture(){
-            this.NombrePortes = 5;
+
+        public override double GetPrixJour()
+        {
+            return this.Categorie.PrixJour;
         }
+        /*
+public Voiture(){
+   this.NombrePortes = 5;
+}
 
 
-        Dans la derniere version de c# on fait comme ca:
-        public int NombrePortes { get; set; } = 5;
-        */
+Dans la derniere version de c# on fait comme ca:
+public int NombrePortes { get; set; } = 5;
+*/
     }
     public class CategorieVoiture 
     {
